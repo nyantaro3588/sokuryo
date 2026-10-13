@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nyantaro3588.github.io/sokuryo/sitemap.txt
+Sitemap: https://nyantaro3588.github.io/sokuryo/sitemap.xml
