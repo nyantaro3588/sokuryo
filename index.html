@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>測点ノート｜土地家屋調査士・測量士補の独学ツールと解説</title>
+<meta name="description" content="土地家屋調査士と測量士補の独学者向けに、計算問題の練習と補助ツールをそろえていく個人サイトです。全て無料、登録不要。">
+<meta property="og:title" content="測点ノート｜土地家屋調査士・測量士補の独学ツールと解説">
+<meta property="og:description" content="計算でつまずく人のための、無料ツールと解説。">
+<meta property="og:type" content="website">
+<style>
+:root{
+  --ink:#16324A;
+  --ink-soft:#4A6480;
+  --paper:#EDF1F4;
+  --rule:#C3D4E0;
+  --vermilion:#B4372F;
+  --stake:#C8952A;
+  --white:#FBFCFD;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+  line-height:1.85;
+  font-size:16px;
+  background-image:
+    linear-gradient(var(--rule) .5px,transparent .5px),
+    linear-gradient(90deg,var(--rule) .5px,transparent .5px);
+  background-size:28px 28px;
+  background-position:-.5px -.5px;
+}
+.mincho{font-family:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Noto Serif JP",serif}
+.mono{font-family:"SFMono-Regular",Consolas,"Courier New",monospace;font-variant-numeric:tabular-nums}
+.wrap{max-width:840px;margin:0 auto;padding:0 20px}
+
+/* ---- header ---- */
+.masthead{border-bottom:1px solid var(--rule);background:rgba(251,252,253,.86);backdrop-filter:blur(2px)}
+.masthead .wrap{display:flex;align-items:baseline;gap:14px;padding:16px 20px}
+.logo{font-size:19px;font-weight:600;letter-spacing:.14em}
+.logo-sub{font-size:11px;letter-spacing:.2em;color:var(--ink-soft)}
+
+/* ---- hero ---- */
+.hero{position:relative;padding:64px 0 56px;overflow:hidden}
+.hero-mark{
+  position:absolute;top:38px;right:-30px;width:230px;height:230px;
+  opacity:.5;pointer-events:none;
+}
+.eyebrow{
+  display:inline-block;font-size:11px;letter-spacing:.28em;color:var(--vermilion);
+  border-bottom:1px solid var(--vermilion);padding-bottom:3px;margin-bottom:22px;
+}
+h1{
+  font-size:clamp(27px,6.2vw,44px);line-height:1.45;font-weight:600;
+  letter-spacing:.01em;max-width:19em;
+}
+h1 .em{
+  background:linear-gradient(transparent 62%,rgba(180,55,47,.22) 62%);
+}
+.lede{margin-top:24px;max-width:32em;color:var(--ink-soft);font-size:15px}
+
+/* ---- section ---- */
+section{padding:52px 0}
+.sec-head{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--ink);padding-bottom:8px;margin-bottom:30px}
+.sec-head h2{font-size:19px;font-weight:600;letter-spacing:.1em}
+.sec-head .count{margin-left:auto;font-size:11px;letter-spacing:.16em;color:var(--ink-soft)}
+
+/* ---- tool list ---- */
+.tools{list-style:none;display:grid;gap:14px}
+.tool{
+  display:grid;grid-template-columns:64px 1fr;
+  background:var(--white);border:1px solid var(--rule);
+}
+.tool-no{
+  display:flex;align-items:center;justify-content:center;
+  border-right:1px solid var(--rule);font-size:12px;letter-spacing:.06em;
+  color:var(--ink-soft);background:linear-gradient(180deg,#F4F7F9,#EAF0F4);
+}
+.tool-body{padding:18px 20px}
+.tool-name{font-size:16px;font-weight:600;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.tag{
+  font-size:10px;letter-spacing:.14em;padding:2px 7px;border:1px solid var(--stake);
+  color:var(--stake);white-space:nowrap;
+}
+
+.tool.live{border-color:var(--ink)}
+.tool.live .tool-no{background:var(--ink);color:var(--paper);border-right-color:var(--ink)}
+.tool-name a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--stake);padding-bottom:2px}
+.tool-name a:hover,.tool-name a:focus-visible{border-bottom-color:var(--vermilion)}
+.tag.open{border-color:var(--vermilion);color:var(--vermilion)}
+.tool-desc{font-size:14px;color:var(--ink-soft);margin-top:6px}
+
+/* ---- note block ---- */
+.note-block{background:var(--ink);color:var(--paper);padding:34px 28px}
+.note-block h2{font-size:18px;font-weight:600;letter-spacing:.08em;margin-bottom:12px}
+.note-block p{font-size:14px;color:#C3D4E0;max-width:34em}
+.note-link{
+  display:inline-block;margin-top:20px;font-size:14px;letter-spacing:.06em;
+  color:var(--paper);text-decoration:none;border-bottom:1px solid var(--stake);padding-bottom:3px;
+}
+.note-link:hover,.note-link:focus-visible{color:#fff;border-bottom-color:#fff}
+
+/* ---- footer ---- */
+footer{border-top:1px solid var(--rule);padding:26px 0 44px;font-size:12px;color:var(--ink-soft)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+a:focus-visible,button:focus-visible{outline:2px solid var(--vermilion);outline-offset:3px}
+
+@media (max-width:560px){
+  .hero{padding:44px 0 40px}
+  .hero-mark{width:150px;height:150px;top:20px;right:-40px;opacity:.35}
+  .tool{grid-template-columns:48px 1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <span class="logo mincho">測点ノート</span>
+    <span class="logo-sub mono">SURVEY STUDY TOOLS</span>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <svg class="hero-mark" viewBox="0 0 200 200" aria-hidden="true">
+      <circle cx="100" cy="100" r="76" fill="none" stroke="#16324A" stroke-width="1"/>
+      <circle cx="100" cy="100" r="46" fill="none" stroke="#16324A" stroke-width="1"/>
+      <circle cx="100" cy="100" r="5" fill="#B4372F"/>
+      <path d="M100 4 V196 M4 100 H196" stroke="#16324A" stroke-width="1"/>
+      <path d="M100 100 L162 52" stroke="#B4372F" stroke-width="1.4"/>
+      <path d="M100 62 A38 38 0 0 1 128 74" fill="none" stroke="#B4372F" stroke-width="1"/>
+      <text x="106" y="58" font-size="11" fill="#B4372F" font-family="monospace">θ</text>
+    </svg>
+    <span class="eyebrow">独学者のための道具箱</span>
+    <h1 class="mincho">独学の壁は、<br><span class="em">たいてい計算</span>にある。</h1>
+    <p class="lede">測量士補は出題の三分の一が計算問題、土地家屋調査士は書式で座標計算が要求されます。条文は本で足りますが、計算は手を動かした回数でしか埋まりません。何度でも叩ける道具を、ここに置いていきます。全て無料、登録不要。</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="mincho">道具</h2>
+      <span class="count mono">3 公開</span>
+    </div>
+    <ul class="tools">
+      <li class="tool live">
+        <div class="tool-no mono">T-1</div>
+        <div class="tool-body">
+          <div class="tool-name"><a href="t1.html">測量士補 一問一答</a><span class="tag open">公開中</span></div>
+          <p class="tool-desc">全20問を順不同で出題。選んだ直後に正誤と解説が出ます。通勤中に一問ずつ崩す用。</p>
+        </div>
+      </li>
+      <li class="tool live">
+        <div class="tool-no mono">T-2</div>
+        <div class="tool-body">
+          <div class="tool-name"><a href="t2.html">座標・面積の計算</a><span class="tag open">公開中</span></div>
+          <p class="tool-desc">座標法による面積、方向角と距離の逆算。計算過程も並べるので、どこで間違えたか分かります。</p>
+        </div>
+      </li>
+      <li class="tool live">
+        <div class="tool-no mono">T-3</div>
+        <div class="tool-body">
+          <div class="tool-name"><a href="t3.html">試験日カウントダウン</a><span class="tag open">公開中</span></div>
+          <p class="tool-desc">残り日数を、手持ちの問題数から一日あたりの分量に割り直します。</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="mincho">解説</h2>
+      <span class="count mono">4 本</span>
+    </div>
+    <ul class="tools">
+      <li class="tool live">
+        <div class="tool-no mono">A-1</div>
+        <div class="tool-body">
+          <div class="tool-name"><a href="a1.html">座標法による面積の求め方</a></div>
+          <p class="tool-desc">倍面積の考え方から、計算表の書き方、符号と順序の落とし穴まで。例題つき。</p>
+        </div>
+      </li>
+      <li class="tool live">
+        <div class="tool-no mono">A-2</div>
+        <div class="tool-body">
+          <div class="tool-name"><a href="a2.html">方向角の逆算と象限補正のしかた</a></div>
+          <p class="tool-desc">tan⁻¹が返す角をどう補正するか。象限判定を3行に圧縮して整理します。</p>
+        </div>
+      </li>
+      <li class="tool live">
+        <div class="tool-no mono">A-3</div>
+        <div class="tool-body">
+          <div class="tool-name"><a href="a3.html">水準測量の計算｜器高式と昇降式</a></div>
+          <p class="tool-desc">後視は足し、前視は引く。二つの記帳方式の違いと、必ず成立する検算式。</p>
+        </div>
+      </li>
+      <li class="tool live">
+        <div class="tool-no mono">A-4</div>
+        <div class="tool-body">
+          <div class="tool-name"><a href="a4.html">トラバース測量の計算手順と閉合誤差</a></div>
+          <p class="tool-desc">内角の検査から方位角、緯距経距、誤差の配分まで。五段階の順序で通します。</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="note-block">
+      <h2 class="mincho">解説はnoteに置いています</h2>
+      <p>受験して落ちた年の記録と、翌年に立て直した手順を書いています。ツールで詰まった箇所の背景は、そちらで補足しています。</p>
+      <a class="note-link" href="https://note.com/nyantaro_3588" target="_blank" rel="noopener">noteを見る →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>測点ノート　<a href="privacy.html" style="color:var(--ink-soft)">プライバシーポリシー・免責事項</a></span>
+    <span class="mono">nyantaro3588.github.io/sokuryo/</span>
+  </div>
+</footer>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3d06a0c40e064a5098be8083400e707c"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
